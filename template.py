@@ -1,8 +1,11 @@
 import cv2
+import json
 
 def lambda_handler(event, context):
-	print "OpenCV installed version:", cv2.__version__
-	return "It works!"
+    # TODO implement
+    print("OpenCV installed version:", cv2.__version__)
+    return {
+        'statusCode': 200,
+        'body': json.dumps(str(cv2.__version__))
+    }
 
-if __name__ == "__main__":
-	lambda_handler(42, 42)

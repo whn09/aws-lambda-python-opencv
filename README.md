@@ -1,3 +1,5 @@
+# !!! Python3 test has NOT PASSED now!
+
 # Python OpenCV module for AWS Lambda
 
 <p align="center">

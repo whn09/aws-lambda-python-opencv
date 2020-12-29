@@ -48,11 +48,14 @@ cp -rf build/numpy/lib64/python3.7/site-packages/numpy lambda-package
 		..
 	make -j`cat /proc/cpuinfo | grep MHz | wc -l`
 )
-cp build/opencv/build/lib/python3/cv2.cpython-37m-x86_64-linux-gnu.so lambda-package/cv2/__init__.so
+#cp build/opencv/build/lib/python3/cv2.cpython-37m-x86_64-linux-gnu.so lambda-package/cv2/__init__.so
+#cp -L build/opencv/build/lib/*.so.4.5 lambda-package/cv2
+#strip --strip-all lambda-package/cv2/*
+#chrpath -r '$ORIGIN' lambda-package/cv2/__init__.so
+#touch lambda-package/cv2/__init__.py
+
+cp -r /usr/local/lib/python3.7/site-packages/cv2/ lambda-package/
 cp -L build/opencv/build/lib/*.so.4.5 lambda-package/cv2
-strip --strip-all lambda-package/cv2/*
-chrpath -r '$ORIGIN' lambda-package/cv2/__init__.so
-touch lambda-package/cv2/__init__.py
 
 # Copy template function and zip package
 cp template.py lambda-package/lambda_function.py
